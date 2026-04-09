@@ -18,10 +18,16 @@ repositories {
 }
 
 dependencies {
-//	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+//	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-authorization-server")
 	implementation("org.springframework.boot:spring-boot-starter-web")
-	
+
+	runtimeOnly("org.postgresql:postgresql:42.7.10")
+
+	implementation("org.flywaydb:flyway-core:11.20.3")
+	runtimeOnly("org.flywaydb:flyway-database-postgresql:11.20.3")
+
 	compileOnly("org.projectlombok:lombok")
 	annotationProcessor("org.projectlombok:lombok")
 
