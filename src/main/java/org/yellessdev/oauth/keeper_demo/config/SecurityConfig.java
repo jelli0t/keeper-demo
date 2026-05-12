@@ -33,6 +33,7 @@ import java.util.UUID;
 
 import static org.springframework.security.web.util.matcher.AntPathRequestMatcher.antMatcher;
 
+
 @Configuration
 public class SecurityConfig {
 
@@ -86,8 +87,18 @@ public class SecurityConfig {
     @Order(2)
     public SecurityFilterChain defaultSecurityChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
+                .csrf(csrf -> csrf.ignoringRequestMatchers("/v1/**"))
                 .authorizeHttpRequests(authorize ->
-                        authorize.anyRequest().authenticated()
+                        authorize
+                                .requestMatchers(
+                                        "/swagger-ui.html",
+                                        "/swagger-ui/**",
+                                        "/v3/api-docs",
+                                        "/v3/api-docs/**"
+                                )
+                                .permitAll()
+                                .anyRequest()
+                                .authenticated()
                 )
                 .formLogin(Customizer.withDefaults());
 

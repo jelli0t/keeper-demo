@@ -19,11 +19,13 @@ repositories {
 
 dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
-//	implementation("org.springframework.boot:spring-boot-starter-jdbc")
 	implementation("org.springframework.boot:spring-boot-starter-oauth2-authorization-server")
+	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.8.6")
 
 	runtimeOnly("org.postgresql:postgresql:42.7.10")
+	runtimeOnly("com.h2database:h2")
 
 	implementation("org.flywaydb:flyway-core:11.20.3")
 	runtimeOnly("org.flywaydb:flyway-database-postgresql:11.20.3")
